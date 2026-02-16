@@ -1,17 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
-
-
-
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
-export class AppRoutingModule { }
-
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -26,5 +14,15 @@ const routes: Routes = [
       import('./features/playlist/playlist.module')
         .then(m => m.PlaylistModule)
   },
-  { path: '', redirectTo: 'discovery', pathMatch: 'full' }
+  {
+    path: '',
+    redirectTo: 'discovery',
+    pathMatch: 'full'
+  }
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
